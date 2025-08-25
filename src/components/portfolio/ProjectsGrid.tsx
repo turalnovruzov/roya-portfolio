@@ -11,17 +11,16 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
     <section 
       id="portfolio" 
       aria-label="Architecture Projects"
-      className="py-20 bg-gray-50 dark:bg-gray-900"
+      className="py-20 bg-ui-surface"
     >
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-light mb-4 text-gray-900 dark:text-white">
+          <h2 className="text-3xl md:text-4xl font-light mb-4 text-ui-text-primary">
             Portfolio
           </h2>
-          <div className="w-16 h-1 mx-auto mb-6" 
-               style={{ backgroundColor: 'hsl(var(--portfolio-accent))' }}>
+          <div className="w-16 h-1 mx-auto mb-6 bg-brand-primary">
           </div>
-          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg text-ui-text-secondary max-w-3xl mx-auto">
             A collection of architectural projects spanning residential, commercial, 
             and interior design work.
           </p>
@@ -35,7 +34,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
           </div>
         ) : (
           <div className="text-center py-12">
-            <p className="text-gray-500 dark:text-gray-400 text-lg">
+            <p className="text-ui-text-muted text-lg">
               Projects will be displayed here once added through the CMS.
             </p>
           </div>
@@ -90,7 +89,7 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <Link 
       href={`/projects/${project.slug}`}
-      className="group block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+      className="group block bg-ui-background rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-ui-border"
     >
       <div className="aspect-[4/3] relative overflow-hidden">
         {coverImageUrl ? (
@@ -102,13 +101,13 @@ function ProjectCard({ project }: { project: Project }) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
           />
         ) : (
-          <div className="w-full h-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+          <div className="w-full h-full bg-ui-surface flex items-center justify-center">
             <svg 
               width="48" 
               height="48" 
               viewBox="0 0 24 24" 
               fill="none"
-              className="text-gray-400"
+              className="text-ui-text-muted"
             >
               <rect 
                 x="3" 
@@ -132,10 +131,7 @@ function ProjectCard({ project }: { project: Project }) {
         
         {/* Featured badge */}
         {project.featured && (
-          <div 
-            className="absolute top-3 right-3 px-2 py-1 text-xs font-medium text-white rounded-full"
-            style={{ backgroundColor: 'hsl(var(--portfolio-accent))' }}
-          >
+          <div className="absolute top-3 right-3 px-2 py-1 text-xs font-medium text-white rounded-full bg-brand-primary">
             Featured
           </div>
         )}
@@ -143,28 +139,22 @@ function ProjectCard({ project }: { project: Project }) {
       
       <div className="p-6">
         <div className="flex items-center justify-between mb-2">
-          <span 
-            className="text-sm font-medium px-2 py-1 rounded-full"
-            style={{ 
-              backgroundColor: 'hsl(var(--portfolio-accent-light))',
-              color: 'hsl(var(--portfolio-accent))'
-            }}
-          >
+          <span className="text-sm font-medium px-2 py-1 rounded-full bg-brand-light text-brand-primary">
             {project.category ? formatCategory(project.category) : 'Project'}
           </span>
           {duration && (
-            <span className="text-sm text-gray-500 dark:text-gray-400">
+            <span className="text-sm text-ui-text-muted">
               {duration}
             </span>
           )}
         </div>
         
-        <h3 className="text-lg font-medium mb-2 text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">
+        <h3 className="text-lg font-medium mb-2 text-ui-text-primary group-hover:text-ui-text-secondary transition-colors">
           {project.title || 'Untitled Project'}
         </h3>
         
         {project.shortDescription && (
-          <div className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+          <div className="text-sm text-ui-text-secondary line-clamp-2">
             {typeof project.shortDescription === 'string' 
               ? project.shortDescription 
               : 'Project description available in detail view'
@@ -177,13 +167,13 @@ function ProjectCard({ project }: { project: Project }) {
             {project.tags.slice(0, 3).map((tagItem, index) => (
               <span 
                 key={index}
-                className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full"
+                className="text-xs px-2 py-1 bg-ui-surface text-ui-text-secondary rounded-full border border-ui-border"
               >
                 {typeof tagItem === 'object' && tagItem.tag ? tagItem.tag : String(tagItem)}
               </span>
             ))}
             {project.tags.length > 3 && (
-              <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full">
+              <span className="text-xs px-2 py-1 bg-ui-surface text-ui-text-secondary rounded-full border border-ui-border">
                 +{project.tags.length - 3} more
               </span>
             )}

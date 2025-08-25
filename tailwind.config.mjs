@@ -56,6 +56,25 @@ const config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
+        // Semantic Brand Colors (Centralized)
+        brand: {
+          primary: 'hsl(var(--brand-primary))',
+          light: 'hsl(var(--brand-light))',
+          dark: 'hsl(var(--brand-dark))',
+          muted: 'hsl(var(--brand-muted))',
+        },
+        // Semantic UI Colors (Centralized)
+        ui: {
+          background: 'hsl(var(--ui-background))',
+          surface: 'hsl(var(--ui-surface))',
+          border: 'hsl(var(--ui-border))',
+          text: {
+            primary: 'hsl(var(--ui-text-primary))',
+            secondary: 'hsl(var(--ui-text-secondary))',
+            muted: 'hsl(var(--ui-text-muted))',
+          },
+        },
+        // shadcn/ui compatibility (keep existing)
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
@@ -92,6 +111,7 @@ const config = {
         success: 'hsl(var(--success))',
         error: 'hsl(var(--error))',
         warning: 'hsl(var(--warning))',
+        // Legacy support (backward compatibility)
         'portfolio-accent': 'hsl(var(--portfolio-accent))',
         'portfolio-accent-hover': 'hsl(var(--portfolio-accent-hover))',
         'portfolio-accent-light': 'hsl(var(--portfolio-accent-light))',

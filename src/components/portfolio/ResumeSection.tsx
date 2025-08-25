@@ -5,31 +5,30 @@ export function ResumeSection() {
     <section 
       id="resume" 
       aria-label="About & Education"
-      className="py-20 bg-white dark:bg-black"
+      className="py-20 bg-ui-background"
     >
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-light mb-4 text-gray-900 dark:text-white">
+          <h2 className="text-3xl md:text-4xl font-light mb-4 text-ui-text-primary">
             About
           </h2>
-          <div className="w-16 h-1 mx-auto" 
-               style={{ backgroundColor: 'hsl(var(--portfolio-accent))' }}>
+          <div className="w-16 h-1 mx-auto bg-brand-primary">
           </div>
         </div>
         
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <div>
-            <h3 className="text-xl font-medium mb-6 text-gray-900 dark:text-white">
+            <h3 className="text-xl font-medium mb-6 text-ui-text-primary">
               Professional Background
             </h3>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+            <p className="text-ui-text-secondary leading-relaxed mb-6">
               With a passion for creating spaces that seamlessly blend form and function, 
               I specialize in architectural design that responds to both environmental context 
               and human experience. My work spans residential, commercial, and interior design 
               projects, each approached with careful attention to sustainability, innovation, 
               and cultural relevance.
             </p>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p className="text-ui-text-secondary leading-relaxed">
               Every project begins with understanding the unique story of the site and the 
               people who will inhabit it. This human-centered approach ensures that each 
               design solution is not only beautiful but meaningful and enduring.
@@ -37,23 +36,23 @@ export function ResumeSection() {
           </div>
           
           <div>
-            <h3 className="text-xl font-medium mb-6 text-gray-900 dark:text-white">
+            <h3 className="text-xl font-medium mb-6 text-ui-text-primary">
               Education & Experience
             </h3>
             
             <div className="space-y-6">
-              <div className="border-l-4 pl-6" style={{ borderColor: 'hsl(var(--portfolio-accent))' }}>
-                <h4 className="font-medium text-gray-900 dark:text-white">Master of Architecture</h4>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">University Name • 2020</p>
-                <p className="text-gray-700 dark:text-gray-300 text-sm mt-2">
+              <div className="border-l-4 border-brand-primary pl-6">
+                <h4 className="font-medium text-ui-text-primary">Master of Architecture</h4>
+                <p className="text-ui-text-muted text-sm">University Name • 2020</p>
+                <p className="text-ui-text-secondary text-sm mt-2">
                   Focused on sustainable design practices and urban planning
                 </p>
               </div>
               
-              <div className="border-l-4 pl-6" style={{ borderColor: 'hsl(var(--portfolio-accent))' }}>
-                <h4 className="font-medium text-gray-900 dark:text-white">Bachelor of Architecture</h4>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">University Name • 2018</p>
-                <p className="text-gray-700 dark:text-gray-300 text-sm mt-2">
+              <div className="border-l-4 border-brand-primary pl-6">
+                <h4 className="font-medium text-ui-text-primary">Bachelor of Architecture</h4>
+                <p className="text-ui-text-muted text-sm">University Name • 2018</p>
+                <p className="text-ui-text-secondary text-sm mt-2">
                   Foundation in architectural design and building systems
                 </p>
               </div>
@@ -64,19 +63,7 @@ export function ResumeSection() {
                 href="/cv.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 border-2 font-medium rounded-lg transition-all duration-300 hover:scale-105"
-                style={{ 
-                  borderColor: 'hsl(var(--portfolio-accent))',
-                  color: 'hsl(var(--portfolio-accent))'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = 'hsl(var(--portfolio-accent))'
-                  e.currentTarget.style.color = 'white'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'transparent'
-                  e.currentTarget.style.color = 'hsl(var(--portfolio-accent))'
-                }}
+                className="inline-flex items-center px-6 py-3 border-2 border-brand-primary text-brand-primary font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:bg-brand-primary hover:text-white"
               >
                 <svg 
                   width="20" 
