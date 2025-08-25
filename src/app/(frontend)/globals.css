@@ -46,18 +46,18 @@
     --radius: 0.2rem;
 
     /* Centralized Brand Colors (Pink Accent System) */
-    --brand-primary: 330 81% 60%;        /* #FF69B4 - Main pink */
-    --brand-light: 330 81% 85%;          /* Light pink for backgrounds */
-    --brand-dark: 330 81% 45%;           /* Darker pink for hover states */
-    --brand-muted: 330 20% 95%;          /* Very light pink for subtle elements */
+    --brand-primary: 330 81% 60%; /* #FF69B4 - Main pink */
+    --brand-light: 330 81% 85%; /* Light pink for backgrounds */
+    --brand-dark: 330 81% 45%; /* Darker pink for hover states */
+    --brand-muted: 330 20% 95%; /* Very light pink for subtle elements */
 
     /* Centralized UI Colors (Light Mode) */
-    --ui-background: 0 0% 100%;          /* Pure white background */
-    --ui-surface: 0 0% 98%;              /* Light gray for cards/panels */
-    --ui-border: 0 0% 88%;               /* Light gray for borders */
-    --ui-text-primary: 0 0% 0%;          /* Black primary text */
-    --ui-text-secondary: 0 0% 25%;       /* Dark gray secondary text */
-    --ui-text-muted: 0 0% 50%;           /* Gray muted text */
+    --ui-background: 0 0% 100%; /* Pure white background */
+    --ui-surface: 0 0% 98%; /* Light gray for cards/panels */
+    --ui-border: 0 0% 88%; /* Light gray for borders */
+    --ui-text-primary: 0 0% 0%; /* Black primary text */
+    --ui-text-secondary: 0 0% 25%; /* Dark gray secondary text */
+    --ui-text-muted: 0 0% 50%; /* Gray muted text */
 
     /* Legacy Portfolio Colors (Backward Compatibility) */
     --portfolio-accent: 330 81% 60%;
@@ -87,7 +87,7 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
-  
+
   .line-clamp-3 {
     overflow: hidden;
     display: -webkit-box;
