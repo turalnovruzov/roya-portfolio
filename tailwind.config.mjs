@@ -92,6 +92,9 @@ const config = {
         success: 'hsl(var(--success))',
         error: 'hsl(var(--error))',
         warning: 'hsl(var(--warning))',
+        'portfolio-accent': 'hsl(var(--portfolio-accent))',
+        'portfolio-accent-hover': 'hsl(var(--portfolio-accent-hover))',
+        'portfolio-accent-light': 'hsl(var(--portfolio-accent-light))',
       },
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
