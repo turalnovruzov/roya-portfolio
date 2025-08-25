@@ -1,0 +1,5 @@
+export { PortfolioLayout } from './PortfolioLayout'
+export { PortfolioHero } from './PortfolioHero'
+export { ResumeSection } from './ResumeSection'
+export { ProjectsGrid } from './ProjectsGrid'
+export { ContactSection } from './ContactSection'
