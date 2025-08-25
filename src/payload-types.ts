@@ -778,11 +778,29 @@ export interface Project {
   /**
    * Project category for filtering and organization
    */
-  category: 'web-development' | 'mobile-app' | 'ui-ux-design' | 'branding' | 'other';
-  /**
-   * Year the project was completed
-   */
-  year: number;
+  category:
+    | 'residential'
+    | 'commercial'
+    | 'interior-design'
+    | 'urban-planning'
+    | 'renovation'
+    | 'landscape-architecture'
+    | 'conceptual-design'
+    | 'other';
+  projectDuration: {
+    /**
+     * When the project began
+     */
+    startDate: string;
+    /**
+     * Check if project is still ongoing
+     */
+    inProgress?: boolean | null;
+    /**
+     * When the project was completed (leave empty if in progress)
+     */
+    endDate?: string | null;
+  };
   /**
    * Technologies, skills, or keywords associated with this project
    */
@@ -1255,7 +1273,13 @@ export interface ProjectsSelect<T extends boolean = true> {
         id?: T;
       };
   category?: T;
-  year?: T;
+  projectDuration?:
+    | T
+    | {
+        startDate?: T;
+        inProgress?: T;
+        endDate?: T;
+      };
   tags?:
     | T
     | {

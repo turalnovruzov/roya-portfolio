@@ -32,12 +32,16 @@ export const Projects: CollectionConfig = {
     title: true,
     slug: true,
     category: true,
-    year: true,
+    projectDuration: {
+      startDate: true,
+      endDate: true,
+      inProgress: true,
+    },
     featured: true,
     coverImage: true,
   },
   admin: {
-    defaultColumns: ['title', 'category', 'year', 'featured', 'updatedAt'],
+    defaultColumns: ['title', 'category', 'featured', 'updatedAt'],
     useAsTitle: 'title',
   },
   fields: [
@@ -113,20 +117,32 @@ export const Projects: CollectionConfig = {
               type: 'select',
               options: [
                 {
-                  label: 'Web Development',
-                  value: 'web-development',
+                  label: 'Residential',
+                  value: 'residential',
                 },
                 {
-                  label: 'Mobile App',
-                  value: 'mobile-app',
+                  label: 'Commercial',
+                  value: 'commercial',
                 },
                 {
-                  label: 'UI/UX Design',
-                  value: 'ui-ux-design',
+                  label: 'Interior Design',
+                  value: 'interior-design',
                 },
                 {
-                  label: 'Branding',
-                  value: 'branding',
+                  label: 'Urban Planning',
+                  value: 'urban-planning',
+                },
+                {
+                  label: 'Renovation',
+                  value: 'renovation',
+                },
+                {
+                  label: 'Landscape Architecture',
+                  value: 'landscape-architecture',
+                },
+                {
+                  label: 'Conceptual Design',
+                  value: 'conceptual-design',
                 },
                 {
                   label: 'Other',
@@ -140,13 +156,46 @@ export const Projects: CollectionConfig = {
               },
             },
             {
-              name: 'year',
-              type: 'number',
-              required: true,
+              name: 'projectDuration',
+              label: 'Project Timeline',
+              type: 'group',
+              fields: [
+                {
+                  name: 'startDate',
+                  label: 'Start Date',
+                  type: 'date',
+                  required: true,
+                  admin: {
+                    description: 'When the project began',
+                    date: {
+                      pickerAppearance: 'monthOnly',
+                    },
+                  },
+                },
+                {
+                  name: 'inProgress',
+                  label: 'Project In Progress',
+                  type: 'checkbox',
+                  defaultValue: false,
+                  admin: {
+                    description: 'Check if project is still ongoing',
+                  },
+                },
+                {
+                  name: 'endDate',
+                  label: 'End Date',
+                  type: 'date',
+                  admin: {
+                    description: 'When the project was completed (leave empty if in progress)',
+                    condition: (_, siblingData) => !siblingData?.inProgress,
+                    date: {
+                      pickerAppearance: 'monthOnly',
+                    },
+                  },
+                },
+              ],
               admin: {
                 position: 'sidebar',
-                step: 1,
-                description: 'Year the project was completed',
               },
             },
             {
