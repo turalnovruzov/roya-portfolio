@@ -11,10 +11,13 @@ import { Breadcrumb } from '@/components/navigation/Breadcrumb'
 import { ProjectGallery } from '@/components/portfolio/ProjectGallery'
 import RichText from '@/components/RichText'
 import { createMetaDescription } from '@/utilities/extractTextFromLexical'
+import { getMediaUrl, getTagString, getMediaAlt, getMediaWidth, getMediaHeight } from '@/utilities/type-guards'
 import Link from 'next/link'
 import Image from 'next/image'
 
-export const dynamic = 'force-dynamic'
+// Enable ISR (Incremental Static Regeneration) with 1-hour cache revalidation
+// This provides static performance benefits while keeping content fresh
+export const revalidate = 3600
 
 type Args = {
   params: Promise<{
@@ -32,6 +35,7 @@ const queryProjectBySlug = cache(async ({ slug }: { slug: string }) => {
     draft: isDraftMode,
     limit: 1,
     overrideAccess: isDraftMode,
+    depth: 2, // Populate relationships including coverImage and gallery
     where: {
       slug: {
         equals: slug,
@@ -49,6 +53,7 @@ export async function generateStaticParams() {
     draft: false,
     limit: 1000,
     overrideAccess: false,
+    depth: 0, // Don't need populated data for static params
   })
 
   const params = projects.docs
@@ -69,7 +74,7 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
     }
   }
 
-  const ogImage = typeof project.coverImage === 'object' ? project.coverImage?.url : undefined
+  const ogImage = getMediaUrl(project.coverImage)
   
   // Extract meta description from shortDescription
   let metaDescription = `${project.title} - ${project.category} project by Roya Novruzova`
@@ -90,7 +95,7 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
       'architecture',
       'portfolio',
       'design',
-      ...(project.tags?.map(tag => typeof tag === 'object' ? tag.tag : tag).filter(Boolean) || []),
+      ...(project.tags?.map(tag => getTagString(tag)).filter((tag): tag is string => Boolean(tag)) || []),
     ],
     authors: [{ name: 'Roya Novruzova' }],
     openGraph: {
@@ -193,13 +198,14 @@ export default async function ProjectPage({ params: paramsPromise }: Args) {
                 {project.tags && project.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tagObj, index) => {
-                      if (typeof tagObj === 'object' && tagObj.tag) {
+                      const tagText = getTagString(tagObj)
+                      if (tagText) {
                         return (
                           <span
                             key={index}
                             className="inline-flex items-center px-3 py-1 rounded text-xs font-medium bg-gray-100 text-gray-700"
                           >
-                            {tagObj.tag}
+                            {tagText}
                           </span>
                         )
                       }
@@ -212,14 +218,14 @@ export default async function ProjectPage({ params: paramsPromise }: Args) {
           </header>
 
           {/* Cover Image */}
-          {typeof project.coverImage === 'object' && project.coverImage?.url && (
+          {getMediaUrl(project.coverImage) && (
             <section className="relative">
               <div className="aspect-video w-full overflow-hidden rounded-xl shadow-2xl">
                 <Image
-                  src={project.coverImage.url}
-                  alt={project.coverImage.alt || project.title}
-                  width={project.coverImage.width || 1200}
-                  height={project.coverImage.height || 800}
+                  src={getMediaUrl(project.coverImage) || ''}
+                  alt={getMediaAlt(project.coverImage) || project.title}
+                  width={getMediaWidth(project.coverImage)}
+                  height={getMediaHeight(project.coverImage)}
                   className="w-full h-full object-cover"
                   loading="lazy"
                   placeholder="blur"
