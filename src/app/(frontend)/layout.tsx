@@ -4,6 +4,7 @@ import { cn } from '@/utilities/ui'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import React from 'react'
+import { Analytics } from '@vercel/analytics/next'
 
 // Using simple hardcoded components instead of CMS-managed globals
 import { SimpleFooter } from '@/components/SimpleFooter'
@@ -27,6 +28,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {children}
           <SimpleFooter />
         </Providers>
+        <Analytics />
       </body>
     </html>
   )
