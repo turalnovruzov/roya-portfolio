@@ -24,14 +24,14 @@ export function Breadcrumb({ items, className = '' }: BreadcrumbProps) {
             )}
             <li className={item.current ? 'text-gray-900 font-medium' : ''}>
               {item.href && !item.current ? (
-                <a 
-                  href={item.href} 
+                <a
+                  href={item.href}
                   className="hover:text-portfolio-accent transition-colors duration-200"
                 >
                   {item.label}
                 </a>
               ) : (
-                <span 
+                <span
                   className={`${item.current ? 'truncate max-w-[200px] sm:max-w-none' : ''}`}
                   aria-current={item.current ? 'page' : undefined}
                 >

@@ -11,7 +11,13 @@ import { Breadcrumb } from '@/components/navigation/Breadcrumb'
 import { ProjectGallery } from '@/components/portfolio/ProjectGallery'
 import RichText from '@/components/RichText'
 import { createMetaDescription } from '@/utilities/extractTextFromLexical'
-import { getMediaUrl, getTagString, getMediaAlt, getMediaWidth, getMediaHeight } from '@/utilities/type-guards'
+import {
+  getMediaUrl,
+  getTagString,
+  getMediaAlt,
+  getMediaWidth,
+  getMediaHeight,
+} from '@/utilities/type-guards'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -75,7 +81,7 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   }
 
   const ogImage = getMediaUrl(project.coverImage)
-  
+
   // Extract meta description from shortDescription
   let metaDescription = `${project.title} - ${project.category} project by Roya Novruzova`
   if (project.shortDescription) {
@@ -95,7 +101,9 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
       'architecture',
       'portfolio',
       'design',
-      ...(project.tags?.map(tag => getTagString(tag)).filter((tag): tag is string => Boolean(tag)) || []),
+      ...(project.tags
+        ?.map((tag) => getTagString(tag))
+        .filter((tag): tag is string => Boolean(tag)) || []),
     ],
     authors: [{ name: 'Roya Novruzova' }],
     openGraph: {
@@ -151,7 +159,7 @@ export default async function ProjectPage({ params: paramsPromise }: Args) {
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
                   {project.title}
                 </h1>
-                
+
                 {/* Project Timeline */}
                 {project.projectDuration && (
                   <div className="text-lg text-gray-600 mb-6">
@@ -238,7 +246,7 @@ export default async function ProjectPage({ params: paramsPromise }: Args) {
           {/* Project Description */}
           {project.shortDescription && (
             <section className="prose prose-lg prose-gray max-w-3xl mx-auto">
-              <RichText 
+              <RichText
                 data={project.shortDescription}
                 enableGutter={false}
                 enableProse={false}
@@ -259,13 +267,13 @@ export default async function ProjectPage({ params: paramsPromise }: Args) {
                 href="/#portfolio"
                 className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-portfolio-accent text-white hover:bg-portfolio-accent/90 transition-colors font-medium"
               >
-                <svg 
-                  className="w-5 h-5 mr-2" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
                 </svg>
                 Back to Portfolio
               </Link>

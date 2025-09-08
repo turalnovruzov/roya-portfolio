@@ -7,24 +7,27 @@ import { draftMode } from 'next/headers'
 
 export default async function HomePage() {
   const featuredProjects = await queryFeaturedProjects()
-  
+
   return <PortfolioLayout featuredProjects={featuredProjects} />
 }
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'Roya Novruzova - Architecture & Design',
-    description: 'Architecture portfolio showcasing residential, commercial, and interior design projects by Roya Novruzova.',
+    description:
+      'Architecture portfolio showcasing residential, commercial, and interior design projects by Roya Novruzova.',
     openGraph: {
       title: 'Roya Novruzova - Architecture & Design',
-      description: 'Architecture portfolio showcasing residential, commercial, and interior design projects.',
+      description:
+        'Architecture portfolio showcasing residential, commercial, and interior design projects.',
       type: 'website',
       url: '/',
     },
     twitter: {
       card: 'summary_large_image',
       title: 'Roya Novruzova - Architecture & Design',
-      description: 'Architecture portfolio showcasing residential, commercial, and interior design projects.',
+      description:
+        'Architecture portfolio showcasing residential, commercial, and interior design projects.',
     },
   }
 }

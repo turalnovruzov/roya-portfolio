@@ -13,7 +13,7 @@ export function ProjectGallery({ gallery, projectTitle }: ProjectGalleryProps) {
   // Progressive loading configuration
   const INITIAL_LOAD_COUNT = 12
   const LOAD_MORE_COUNT = 12
-  
+
   const [displayCount, setDisplayCount] = useState(INITIAL_LOAD_COUNT)
 
   if (!gallery || gallery.length === 0) {
@@ -24,7 +24,7 @@ export function ProjectGallery({ gallery, projectTitle }: ProjectGalleryProps) {
   const hasMore = displayCount < gallery.length
 
   const loadMore = () => {
-    setDisplayCount(prev => Math.min(prev + LOAD_MORE_COUNT, gallery.length))
+    setDisplayCount((prev) => Math.min(prev + LOAD_MORE_COUNT, gallery.length))
   }
 
   return (
@@ -33,7 +33,12 @@ export function ProjectGallery({ gallery, projectTitle }: ProjectGalleryProps) {
       <div className="space-y-16">
         {visibleImages.map((item, index) => {
           // Type guard to ensure we have a valid gallery item
-          if (typeof item !== 'object' || !item || typeof item.image !== 'object' || !item.image?.url) {
+          if (
+            typeof item !== 'object' ||
+            !item ||
+            typeof item.image !== 'object' ||
+            !item.image?.url
+          ) {
             return null
           }
 
@@ -64,16 +69,11 @@ export function ProjectGallery({ gallery, projectTitle }: ProjectGalleryProps) {
           )
         })}
       </div>
-      
+
       {/* Load More Button */}
       {hasMore && (
         <div className="flex justify-center pt-8">
-          <Button 
-            onClick={loadMore}
-            variant="outline"
-            size="lg"
-            className="px-8 py-3"
-          >
+          <Button onClick={loadMore} variant="outline" size="lg" className="px-8 py-3">
             Load More Images ({gallery.length - displayCount} remaining)
           </Button>
         </div>

@@ -42,16 +42,16 @@ export function getMediaUrl(media: Media | string | number | null | undefined): 
   if (typeof media === 'string') {
     return media
   }
-  
+
   if (typeof media === 'number') {
     // Media ID - cannot extract URL without population
     return undefined
   }
-  
+
   if (isMediaObject(media)) {
     return media.url || undefined
   }
-  
+
   return undefined
 }
 
@@ -63,11 +63,11 @@ export function getTagString(tag: ProjectTag | string | null | undefined): strin
   if (typeof tag === 'string') {
     return tag
   }
-  
+
   if (isTagObject(tag)) {
     return tag.tag
   }
-  
+
   return undefined
 }
 
@@ -79,7 +79,7 @@ export function getMediaAlt(media: Media | string | number | null | undefined): 
   if (isMediaObject(media)) {
     return media.alt || undefined
   }
-  
+
   return undefined
 }
 
@@ -87,11 +87,14 @@ export function getMediaAlt(media: Media | string | number | null | undefined): 
  * Helper function to safely extract width from Media field
  * Returns the width number or default if not available
  */
-export function getMediaWidth(media: Media | string | number | null | undefined, defaultWidth = 1200): number {
+export function getMediaWidth(
+  media: Media | string | number | null | undefined,
+  defaultWidth = 1200,
+): number {
   if (isMediaObject(media) && typeof media.width === 'number' && media.width !== null) {
     return media.width
   }
-  
+
   return defaultWidth
 }
 
@@ -99,10 +102,13 @@ export function getMediaWidth(media: Media | string | number | null | undefined,
  * Helper function to safely extract height from Media field
  * Returns the height number or default if not available
  */
-export function getMediaHeight(media: Media | string | number | null | undefined, defaultHeight = 800): number {
+export function getMediaHeight(
+  media: Media | string | number | null | undefined,
+  defaultHeight = 800,
+): number {
   if (isMediaObject(media) && typeof media.height === 'number' && media.height !== null) {
     return media.height
   }
-  
+
   return defaultHeight
 }

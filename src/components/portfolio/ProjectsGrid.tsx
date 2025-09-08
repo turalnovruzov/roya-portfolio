@@ -8,24 +8,17 @@ interface ProjectsGridProps {
 
 export function ProjectsGrid({ projects }: ProjectsGridProps) {
   return (
-    <section 
-      id="portfolio" 
-      aria-label="Architecture Projects"
-      className="py-20 bg-ui-surface"
-    >
+    <section id="portfolio" aria-label="Architecture Projects" className="py-20 bg-ui-surface">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-light mb-4 text-ui-text-primary">
-            Portfolio
-          </h2>
-          <div className="w-16 h-1 mx-auto mb-6 bg-brand-primary">
-          </div>
+          <h2 className="text-3xl md:text-4xl font-light mb-4 text-ui-text-primary">Portfolio</h2>
+          <div className="w-16 h-1 mx-auto mb-6 bg-brand-primary"></div>
           <p className="text-lg text-ui-text-secondary max-w-3xl mx-auto">
-            A collection of architectural projects spanning residential, commercial, 
-            and interior design work.
+            A collection of architectural projects spanning residential, commercial, and interior
+            design work.
           </p>
         </div>
-        
+
         {projects.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {projects.map((project) => (
@@ -48,11 +41,11 @@ function ProjectCard({ project }: { project: Project }) {
   // Format project duration display
   const formatDuration = (projectDuration: Project['projectDuration']) => {
     if (!projectDuration) return ''
-    
+
     const startDate = projectDuration.startDate ? new Date(projectDuration.startDate) : null
     const endDate = projectDuration.endDate ? new Date(projectDuration.endDate) : null
     const inProgress = projectDuration.inProgress
-    
+
     if (startDate) {
       const startYear = startDate.getFullYear()
       if (inProgress) {
@@ -63,7 +56,7 @@ function ProjectCard({ project }: { project: Project }) {
       }
       return `${startYear}`
     }
-    
+
     return ''
   }
 
@@ -79,7 +72,7 @@ function ProjectCard({ project }: { project: Project }) {
   const formatCategory = (category: string) => {
     return category
       .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ')
   }
 
@@ -87,7 +80,7 @@ function ProjectCard({ project }: { project: Project }) {
   const duration = formatDuration(project.projectDuration)
 
   return (
-    <Link 
+    <Link
       href={`/projects/${project.slug}`}
       className="group block bg-ui-background rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-ui-border"
     >
@@ -102,33 +95,29 @@ function ProjectCard({ project }: { project: Project }) {
           />
         ) : (
           <div className="w-full h-full bg-ui-surface flex items-center justify-center">
-            <svg 
-              width="48" 
-              height="48" 
-              viewBox="0 0 24 24" 
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
               fill="none"
               className="text-ui-text-muted"
             >
-              <rect 
-                x="3" 
-                y="3" 
-                width="18" 
-                height="18" 
-                rx="2" 
-                ry="2" 
-                stroke="currentColor" 
+              <rect
+                x="3"
+                y="3"
+                width="18"
+                height="18"
+                rx="2"
+                ry="2"
+                stroke="currentColor"
                 strokeWidth="2"
               />
-              <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" strokeWidth="2"/>
-              <polyline 
-                points="21,15 16,10 5,21" 
-                stroke="currentColor" 
-                strokeWidth="2"
-              />
+              <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" strokeWidth="2" />
+              <polyline points="21,15 16,10 5,21" stroke="currentColor" strokeWidth="2" />
             </svg>
           </div>
         )}
-        
+
         {/* Featured badge */}
         {project.featured && (
           <div className="absolute top-3 right-3 px-2 py-1 text-xs font-medium text-white rounded-full bg-brand-primary">
@@ -136,36 +125,31 @@ function ProjectCard({ project }: { project: Project }) {
           </div>
         )}
       </div>
-      
+
       <div className="p-6">
         <div className="flex items-center justify-between mb-2">
           <span className="text-sm font-medium px-2 py-1 rounded-full bg-brand-light text-brand-primary">
             {project.category ? formatCategory(project.category) : 'Project'}
           </span>
-          {duration && (
-            <span className="text-sm text-ui-text-muted">
-              {duration}
-            </span>
-          )}
+          {duration && <span className="text-sm text-ui-text-muted">{duration}</span>}
         </div>
-        
+
         <h3 className="text-lg font-medium mb-2 text-ui-text-primary group-hover:text-ui-text-secondary transition-colors">
           {project.title || 'Untitled Project'}
         </h3>
-        
+
         {project.shortDescription && (
           <div className="text-sm text-ui-text-secondary line-clamp-2">
-            {typeof project.shortDescription === 'string' 
-              ? project.shortDescription 
-              : 'Project description available in detail view'
-            }
+            {typeof project.shortDescription === 'string'
+              ? project.shortDescription
+              : 'Project description available in detail view'}
           </div>
         )}
-        
+
         {project.tags && project.tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mt-3">
             {project.tags.slice(0, 3).map((tagItem, index) => (
-              <span 
+              <span
                 key={index}
                 className="text-xs px-2 py-1 bg-ui-surface text-ui-text-secondary rounded-full border border-ui-border"
               >

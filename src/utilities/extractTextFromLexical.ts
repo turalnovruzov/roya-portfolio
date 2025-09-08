@@ -38,7 +38,7 @@ export function extractTextFromLexical(editorState: DefaultTypedEditorState): st
  */
 export function createMetaDescription(editorState: DefaultTypedEditorState): string {
   const text = extractTextFromLexical(editorState)
-  
+
   if (text.length <= 160) {
     return text
   }
@@ -47,12 +47,12 @@ export function createMetaDescription(editorState: DefaultTypedEditorState): str
   const truncated = text.substring(0, 157)
   const lastSentence = truncated.lastIndexOf('.')
   const lastSpace = truncated.lastIndexOf(' ')
-  
+
   if (lastSentence > 120) {
     return text.substring(0, lastSentence + 1)
   } else if (lastSpace > 120) {
     return text.substring(0, lastSpace) + '...'
   }
-  
+
   return truncated + '...'
 }

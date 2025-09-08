@@ -8,9 +8,7 @@ export const SimpleFooter: React.FC = () => {
           <div className="text-sm text-gray-400">
             © {new Date().getFullYear()} Roya Novruzova. All rights reserved.
           </div>
-          <div className="text-sm text-gray-400">
-            Architecture & Design Portfolio
-          </div>
+          <div className="text-sm text-gray-400">Architecture & Design Portfolio</div>
         </div>
       </div>
     </footer>
