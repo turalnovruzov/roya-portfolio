@@ -3,7 +3,8 @@ import { getServerSideURL } from './getURL'
 
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
-  description: 'Architecture portfolio showcasing residential, commercial, and interior design projects by Roya Novruzova.',
+  description:
+    'Architecture portfolio showcasing residential, commercial, and interior design projects by Roya Novruzova.',
   images: [
     {
       url: `${getServerSideURL()}/portfolio-og.jpg`,
